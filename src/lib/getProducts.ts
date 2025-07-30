@@ -1,5 +1,5 @@
-import { ProductProps } from "@/app/serverside/page";
 import axios from "axios";
+import { ProductProps } from "@/app/serverside/_internal/typescript-products";
 
 export const getProducts = async (
   url: string
