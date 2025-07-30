@@ -30,12 +30,13 @@ const Page = async () => {
       </p>
     );
   }
-
+  console.log("Products", products);
   const productList = Array.isArray(products)
     ? products
     : Array.isArray(products?.data)
     ? products.data
     : [];
+  console.log("productList", productList);
 
   return (
     <div style={{ display: "block" }}>
