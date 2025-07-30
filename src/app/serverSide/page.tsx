@@ -1,7 +1,7 @@
 import { getProducts } from "@/lib/getProducts";
 import React from "react";
 
-export interface Product {
+export interface ProductProps {
   id: number;
   title: string;
   price: number;
@@ -11,12 +11,12 @@ export interface Product {
   name?: string;
 }
 
-export interface ProductResponse extends Product {
+export interface ProductResponse extends ProductProps {
   id: number;
 }
 
 export interface ProductListProps {
-  data: Product[];
+  data: ProductProps[];
 }
 
 const Page = async () => {

@@ -1,14 +1,14 @@
+import { ProductProps } from "@/app/serverside/page";
 import axios from "axios";
-import { Product } from "@/app/serverside/page";
 
 export const getProducts = async (
   url: string
 ): Promise<{
-  data: Product[] | { data: Product[] };
+  data: ProductProps[] | { data: ProductProps[] };
   error: string | null;
 }> => {
   try {
-    const response = await axios.get<Product[]>(url);
+    const response = await axios.get<ProductProps[]>(url);
     return {
       data: response.data,
       error: null,
@@ -25,13 +25,13 @@ export const getProducts = async (
 };
 
 // /lib/postProductData.ts
-interface ProductResponse extends Product {
+interface ProductResponse extends ProductProps {
   id: number;
 }
 
 export const postProductData = async (
   url: string,
-  payload: Omit<Product, "id">
+  payload: Omit<ProductProps, "id">
   // payload: Partial<Product>
 ): Promise<{
   data: ProductResponse | null;
