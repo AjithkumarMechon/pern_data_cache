@@ -1,4 +1,4 @@
-import { Product } from "@/app/serverSide/page";
+import { Product } from "@/app/serverside/page";
 import axios from "axios";
 
 export const getProducts = async (
