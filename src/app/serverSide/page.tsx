@@ -1,6 +1,14 @@
 import { getProducts } from "@/lib/getProducts";
 import React from "react";
-import { ProductProps } from "@/app/serverside/_internal/typescript-products";
+interface ProductProps {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+  category: string;
+  name?: string;
+}
 
 export interface ProductResponse extends ProductProps {
   id: number;
