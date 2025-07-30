@@ -21,7 +21,7 @@ export interface ProductListProps {
 
 const Page = async () => {
   const { data: products, error: getError } = await getProducts(
-    "http://localdev:3000/api/dashboard"
+    "/api/dashboard"
   );
 
   if (getError) {
