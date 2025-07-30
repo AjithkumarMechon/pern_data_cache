@@ -15,8 +15,9 @@ export const getProducts = async (
   data: ProductProps[] | { data: ProductProps[] };
   error: string | null;
 }> => {
+  const baseUrl: string = process.env.API_BASE_URL ?? "http://localdev:3000";
   try {
-    const response = await axios.get<ProductProps[]>(url);
+    const response = await axios.get<ProductProps[]>(`${baseUrl}${url}`);
     return {
       data: response.data,
       error: null,

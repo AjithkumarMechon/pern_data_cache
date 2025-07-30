@@ -1,19 +1,66 @@
-"use client";
+import { getProducts } from "@/lib/getProducts";
 import React from "react";
-import { useStore } from "@/app/stores";
-import Header from "@/app/header/page";
+interface ProductProps {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+  category: string;
+  name?: string;
+}
 
-function Page() {
-  const { count, setUser } = useStore((state) => state);
+export interface ProductResponse extends ProductProps {
+  id: number;
+}
+
+export interface ProductListProps {
+  data: ProductProps[];
+}
+
+const Page = async () => {
+  const { data: products, error: getError } = await getProducts(
+    "/api/dashboard"
+  );
+
+  if (getError) {
+    return (
+      <p style={{ color: "red" }}>
+        {typeof getError === "string" ? getError : "Failed to fetch products."}
+      </p>
+    );
+  }
+  console.log("Products", products);
+  const productList = Array.isArray(products)
+    ? products
+    : Array.isArray(products?.data)
+    ? products.data
+    : [];
+  console.log("productList", productList);
 
   return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setUser({ name: "Alice" })}>Login as Alice</button>
-      <hr />
-      <Header />
+    <div style={{ display: "block" }}>
+      <h1
+        style={{
+          fontWeight: 700,
+          fontSize: "2rem",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        Products
+      </h1>
+      {productList.length > 0 ? (
+        productList.map((item) => (
+          <div key={item.id}>
+            <p>{item.name}</p>
+          </div>
+        ))
+      ) : (
+        <p>No products found.</p>
+      )}
     </div>
   );
-}
+};
 
 export default Page;
