@@ -1,5 +1,5 @@
-import { Product } from "@/app/serverside/page";
 import axios from "axios";
+import { Product } from "@/app/serverside/page";
 
 export const getProducts = async (
   url: string
