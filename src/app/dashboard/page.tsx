@@ -1,5 +1,6 @@
 import { getProducts } from "@/lib/getProducts";
 import React from "react";
+import EditField from "./_internal/EditDashboard";
 interface ProductProps {
   id: number;
   title: string;
@@ -30,13 +31,17 @@ const Page = async () => {
       </p>
     );
   }
-  console.log("Products", products);
-  const productList = Array.isArray(products)
+
+  type Product = {
+    id: string;
+    name: string;
+  };
+
+  const productList: Product[] = Array.isArray(products)
     ? products
-    : Array.isArray(products?.data)
-    ? products.data
+    : Array.isArray((products as { data?: Product[] })?.data)
+    ? (products as { data: Product[] }).data
     : [];
-  console.log("productList", productList);
 
   return (
     <div style={{ display: "block" }}>
@@ -46,18 +51,15 @@ const Page = async () => {
           fontSize: "2rem",
           display: "flex",
           justifyContent: "center",
+          marginBottom: "1rem", // optional enhancement
         }}
       >
         Products
       </h1>
       {productList.length > 0 ? (
-        productList.map((item) => (
-          <div key={item.id}>
-            <p>{item.name}</p>
-          </div>
-        ))
+        productList.map((item) => <EditField key={item.id} item={item} />)
       ) : (
-        <p>No products found.</p>
+        <p style={{ textAlign: "center", color: "gray" }}>No products found.</p>
       )}
     </div>
   );

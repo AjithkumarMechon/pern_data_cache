@@ -1,23 +1,23 @@
+import { HTTP } from "@/utils/http";
 import axios from "axios";
 interface ProductProps {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-  category: string;
+  id?: number;
+  title?: string;
+  price?: number;
+  description?: string;
+  image?: string;
+  category?: string;
   name?: string;
 }
 
 export const getProducts = async (
   url: string
 ): Promise<{
-  data: ProductProps[] | { data: ProductProps[] };
+  data: ProductProps[] | { data: ProductProps[] } | unknown;
   error: string | null;
 }> => {
-  const baseUrl: string = process.env.API_BASE_URL ?? "http://localdev:3000";
   try {
-    const response = await axios.get<ProductProps[]>(`${baseUrl}${url}`);
+    const response = await HTTP.doGet<ProductResponse>(url);
     return {
       data: response.data,
       error: null,
@@ -38,23 +38,26 @@ interface ProductResponse extends ProductProps {
   id: number;
 }
 
-export const postProductData = async (
+// interface ProductPost {
+//   name: string;
+// }
+
+export const postProducts = async (
   url: string,
-  payload: Omit<ProductProps, "id">
-  // payload: Partial<Product>
+  payload: Partial<ProductProps>
 ): Promise<{
-  data: ProductResponse | null;
+  data: ProductResponse | null | unknown;
   error: string | null;
 }> => {
   try {
-    const response = await axios.post(url, payload);
+    const response = await HTTP.doPost<ProductResponse>(url, payload);
     return {
       data: response.data,
       error: null,
     };
   } catch (error) {
     const message = axios.isAxiosError(error)
-      ? error.message
+      ? error.response?.data?.message || error.message
       : "An unexpected error occurred";
     return {
       data: null,
