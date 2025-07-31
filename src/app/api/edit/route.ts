@@ -17,7 +17,7 @@ export const PUT = async (req: Request) => {
 
     // Check if the dashboard exists
     const existingData = await pool.query(
-      `SELECT * FROM fullstacknextjs."dashboards" WHERE id = $1`,
+      `SELECT * FROM fullstacknextjs."serverside" WHERE id = $1`,
       [id]
     );
 
@@ -27,7 +27,7 @@ export const PUT = async (req: Request) => {
 
     // Update the appropriate field
     await pool.query(
-      `UPDATE fullstacknextjs."dashboards" SET name = $1 WHERE id = $2`,
+      `UPDATE fullstacknextjs."serverside" SET name = $1 WHERE id = $2`,
       [name, id]
     );
 

@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     }
 
     await pool.query(
-      `INSERT INTO fullstacknextjs."dashboards" (name, created_at) VALUES ($1, $2)`,
+      `INSERT INTO fullstacknextjs."serverside" (name, created_at) VALUES ($1, $2)`,
       [result.data.name, new Date()]
     );
 

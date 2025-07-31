@@ -4,7 +4,7 @@ import Pool from "@/utils/postgresql";
 
 async function ensureTableExists() {
   await Pool.query(`CREATE SCHEMA IF NOT EXISTS fullstacknextjs`);
-  await Pool.query(`CREATE TABLE IF NOT EXISTS fullstacknextjs."dashboards" (
+  await Pool.query(`CREATE TABLE IF NOT EXISTS fullstacknextjs."serverside" (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT null,
   created_at TIMESTAMP DEFAULT NOW()
@@ -17,7 +17,7 @@ export const GET = async () => {
     await postgresConnect();
     await ensureTableExists();
     const existingData = await Pool.query(
-      `SELECT * FROM fullstacknextjs."dashboards"`
+      `SELECT * FROM fullstacknextjs."serverside"`
     );
     if (existingData.rows.length > 0) {
       return NextResponse.json({
