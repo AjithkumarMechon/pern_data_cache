@@ -9,7 +9,6 @@ export default async function AddPage() {
         action={async (formData) => {
           "use server";
           const name = formData.get("item") as string;
-          // console.log(name);
 
           const { data, error } = await postProducts("/api/add", { name });
 
