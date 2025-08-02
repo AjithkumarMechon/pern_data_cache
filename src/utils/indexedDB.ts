@@ -5,8 +5,11 @@ const DB_NAME = "my-db";
 const DB_VERSION = 1;
 const STORE_NAME = "my-store";
 
+//Type only way to declared type in typescript
+type id = number;
+
 interface MyItem {
-  id?: number;
+  id?: id;
   name: string;
   createdAt: Date;
 }
@@ -28,7 +31,7 @@ export async function initDB(): Promise<IDBPDatabase<DBStructure>> {
   });
 }
 
-export async function addItem<T extends { id?: number }>(
+export async function addItem<T extends { id?: id }>(
   item: T
 ): Promise<IDBValidKey> {
   const db = await initDB();
@@ -40,12 +43,12 @@ export async function getAllItems() {
   return db.getAll(STORE_NAME);
 }
 
-export async function getItem(id: number) {
+export async function getItem(id: id) {
   const db = await initDB();
   return db.get(STORE_NAME, id);
 }
 
-export async function deleteItem(id: number) {
+export async function deleteItem(id: id) {
   const db = await initDB();
   return db.delete(STORE_NAME, id);
 }
