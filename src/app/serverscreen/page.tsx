@@ -9,7 +9,7 @@ interface PostProps {
   title?: string;
   body?: string;
 }
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 const PostsPage = async () => {
   const { data, error } = await getFetchData();
 
