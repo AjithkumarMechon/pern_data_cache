@@ -1,6 +1,7 @@
 "use client";
 
 import { editProduct } from "@/lib/editDelete";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type Product = {
@@ -23,7 +24,7 @@ interface ProductProps {
 export default function EditField({ item }: EditFieldProps) {
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState<string>(item.name);
-
+  const router = useRouter();
   async function handleEdit(id: number | undefined, newValue: ProductProps) {
     try {
       const numericId = typeof id === "string" ? parseInt(id) : id;
@@ -35,7 +36,7 @@ export default function EditField({ item }: EditFieldProps) {
         console.error("Edit failed:", error);
         return;
       }
-
+      router.refresh();
       console.log("Edit successful:", data);
     } catch (err) {
       console.error("Unexpected error:", err);

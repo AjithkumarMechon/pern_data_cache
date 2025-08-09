@@ -1,4 +1,6 @@
 import { postProducts } from "@/lib/getProducts";
+import { redirect } from "next/navigation";
+export const dynamic = "force-dynamic";
 
 export default async function AddPage() {
   return (
@@ -16,6 +18,7 @@ export default async function AddPage() {
             console.error("Failed to post product:", error, data);
           } else {
             console.log("Product posted:", data);
+            redirect("/");
           }
         }}
         className="space-y-4"

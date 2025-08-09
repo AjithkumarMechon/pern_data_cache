@@ -19,6 +19,8 @@ export interface ProductListProps {
   data: ProductProps[];
 }
 
+export const dynamic = "force-dynamic";
+
 const Page = async () => {
   const { data: products, error: getError } = await getProducts(
     "/api/dashboard"
@@ -57,7 +59,9 @@ const Page = async () => {
         Products
       </h1>
       {productList.length > 0 ? (
-        productList.map((item) => <EditField key={item.id} item={item} />)
+        productList
+          .sort((a, b) => Number(a.id) - Number(b.id))
+          .map((item) => <EditField key={item.id} item={item} />)
       ) : (
         <p style={{ textAlign: "center", color: "gray" }}>No products found.</p>
       )}
