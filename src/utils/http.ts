@@ -7,11 +7,12 @@ const config = () => {
     headers: {
       "Content-Type": "application/json",
       Authorization: token ? `Bearer ${token}` : "", // Ensure token is valid
+      // "cache-control": "no-cache",
     },
   };
 };
 
-const baseURL: string = process.env.API_BASE_URL ?? "http://localdev:3000";
+const baseURL: string = process.env.API_BASE_URL ?? "http://localhost:3000";
 export class HTTP {
   static async doGet<T>(url: string): Promise<AxiosResponse<T>> {
     return await axios.get(`${baseURL}${url}`, config());
@@ -30,8 +31,15 @@ export class HTTP {
     return axios.put<T>(`${baseURL}${url}`, value, config());
   }
 
-  static async doDelete<T>(url: string): Promise<AxiosResponse<T>> {
-    return await axios.delete(`${baseURL}${url}`, config());
+  static async doDelete<T>(
+    url: string,
+    value: unknown
+  ): Promise<AxiosResponse<T>> {
+    // return axios.delete<T>(`${baseURL}${url}`, value, config());
+    return axios.delete<T>(`${baseURL}${url}`, {
+      ...config(),
+      data: value,
+    });
   }
 }
 

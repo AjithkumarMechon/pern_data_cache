@@ -18,6 +18,7 @@ export const getProducts = async (
 }> => {
   try {
     const response = await HTTP.doGet<ProductResponse>(url);
+
     return {
       data: response.data,
       error: null,

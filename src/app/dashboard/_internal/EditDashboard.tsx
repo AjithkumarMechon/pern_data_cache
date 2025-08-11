@@ -1,8 +1,9 @@
 "use client";
 
-import { editProduct } from "@/lib/editDelete";
+import { deleteProduct, editProduct } from "@/tanstack/dashboard/editDelete";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 type Product = {
   id: string;
@@ -36,17 +37,27 @@ export default function EditField({ item }: EditFieldProps) {
         console.error("Edit failed:", error);
         return;
       }
+      toast.success(typeof data === "string" ? data : "Successfully Updated");
       router.refresh();
-      console.log("Edit successful:", data);
     } catch (err) {
       console.error("Unexpected error:", err);
     }
   }
 
-  // function handleDelete(id: string): Promise<void> {
-  //   console.log("Delete:", id);
-  //   // Example: await db.product.delete({ where: { id } })
-  // }
+  async function handleDelete(id: string): Promise<void> {
+    // console.log("Delete:", id);
+    try {
+      const { data, error } = await deleteProduct("/api/delete", Number(id));
+      if (error) {
+        console.error("Edit failed:", error);
+        return;
+      }
+      toast.success(typeof data === "string" ? data : "Successfully deleted");
+      router.refresh();
+    } catch (err) {
+      console.error("Unexpected error:", err);
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,11 +83,11 @@ export default function EditField({ item }: EditFieldProps) {
             {item.name}
           </span>
           <form
-            // action={() => handleDelete(item.id)}
+            action={() => handleDelete(item.id)}
             style={{ display: "inline", marginLeft: "0.5rem" }}
           >
             <button type="submit" style={{ color: "red" }}>
-              {/* X */}
+              X
             </button>
           </form>
         </>

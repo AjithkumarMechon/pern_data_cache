@@ -1,4 +1,4 @@
-import { postProducts } from "@/lib/getProducts";
+import { postProducts } from "@/tanstack/dashboard/getProducts";
 import { redirect } from "next/navigation";
 export const dynamic = "force-dynamic";
 

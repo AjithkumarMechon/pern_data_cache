@@ -37,3 +37,24 @@ export const editProduct = async (
     };
   }
 };
+
+export const deleteProduct = async (
+  url: string,
+  id: number
+): Promise<{
+  data: ProductResponse | null;
+  error: string | null;
+}> => {
+  try {
+    const response = await HTTP.doDelete<ProductResponse>(url, { id });
+    return { data: response.data, error: null };
+  } catch (error) {
+    const message = axios.isAxiosError(error)
+      ? error.response?.data?.message || error.message
+      : "An unexpected error occurred";
+    return {
+      data: null,
+      error: message,
+    };
+  }
+};
