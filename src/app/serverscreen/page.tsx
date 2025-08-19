@@ -1,6 +1,7 @@
 // app/posts/page.tsx or app/posts/PostsPage.tsx
 
-import { getFetchData } from "@/lib/serverscreen";
+// import { getFetchData } from "@/lib/serverscreen";
+import { getFetchData } from "@/tanstack/dashboard/serverscreen";
 import React from "react";
 
 interface PostProps {
@@ -9,9 +10,12 @@ interface PostProps {
   title?: string;
   body?: string;
 }
-export const dynamic = "force-dynamic";
+
+// export const dynamic = "force-dynamic";
 const PostsPage = async () => {
-  const { data, error } = await getFetchData();
+  const url: string = "https://jsonplaceholder.typicode.com/posts";
+  const options: { cache: string } = { cache: "no-store" };
+  const { data, error } = await getFetchData(url, options);
 
   //   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>{error as string}</p>;

@@ -46,16 +46,20 @@ const Page = async () => {
     : [];
 
   return (
-    <div className="block">
-      <h1 className="font-bold text-2xl flex justify-center mb-4">Products</h1>
-      {productList.length > 0 ? (
-        productList
-          .sort((a, b) => Number(a.id) - Number(b.id))
-          .map((item) => <EditField key={item.id} item={item} />)
-      ) : (
-        <p className="text-center text-gray-500">No products found.</p>
-      )}
-    </div>
+    <>
+      <div className="block">
+        <h1 className="font-bold text-2xl flex justify-center mb-4">
+          Products
+        </h1>
+        {productList.length > 0 ? (
+          productList
+            .sort((a, b) => Number(a.id) - Number(b.id))
+            .map((item) => <EditField key={item.id} item={item} />)
+        ) : (
+          <p className="text-center text-gray-500">No products found.</p>
+        )}
+      </div>
+    </>
   );
 };
 

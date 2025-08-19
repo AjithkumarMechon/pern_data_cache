@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
+import type { AxiosRequestConfig } from "axios";
 
 export const useFetchData = () => {
   return useQuery({
@@ -16,11 +17,15 @@ export const useFetchData = () => {
 
 // lib/getFetchData.ts
 
-export const getFetchData = async () => {
+export interface GetFetchDataProps extends AxiosRequestConfig {
+  cache?: string;
+}
+
+export const getFetchData = async (url: string, options: GetFetchDataProps) => {
   try {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts"
-    );
+    // Destructure cache and pass the rest to axios
+    const { ...axiosOptions } = options;
+    const response = await axios.get(url, axiosOptions);
     return { data: response.data, error: null };
   } catch (error) {
     console.error("Error fetching data:", error);
