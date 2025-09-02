@@ -14,10 +14,6 @@ function MainComponent() {
       <div className="mt-4 p-4 border border-gray-300 rounded-lg">
         <FieldPage field={section} />
       </div>
-      <hr />
-      <PersonalDetails />
-      <hr />
-      <EducationDetails />
     </div>
   );
 }

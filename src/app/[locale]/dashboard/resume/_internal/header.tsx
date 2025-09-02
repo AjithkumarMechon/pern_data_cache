@@ -9,7 +9,7 @@ export default function ResumeHeader() {
     <div className="flex flex-col md:flex-row justify-around gap-4 mt-8">
       <header>
         <h1 className="text-2xl font-bold">{t("name")}</h1>
-        <p className="text-lg text-gray-600">{t("role")}</p>
+        <p className="text-lg dark:text-red-900  text-gray-600">{t("role")}</p>
       </header>
 
       <address className="not-italic space-y-1">

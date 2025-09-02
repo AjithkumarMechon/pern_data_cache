@@ -1,4 +1,6 @@
 import { useTranslations } from "next-intl";
+import PersonalDetails from "./PersonalDetails";
+import EducationDetails from "./EducationDetails";
 
 interface FieldPageProps {
   field: string | string[] | undefined | null;
@@ -33,6 +35,17 @@ const FieldPage: React.FC<FieldPageProps> = ({ field }) => {
   return (
     <div>
       {translationsMap[data[fieldKey]] || "No data available for this section."}
+      {/* Conditionally render components if fieldKey is "home" */}
+      {fieldKey === "home" ? (
+        <>
+          <hr />
+          <PersonalDetails />
+          <hr />
+          <EducationDetails />
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -21,21 +21,37 @@
     "experienceText": "I have 5+ years of experience in full-stack development."
   },
   "PersonalDetails": {
+    "PersonalDetails": "PersonalDetails",
     "name": "Name",
     "dob": "Date of Birth",
     "age": "Age",
     "bloodGroup": "Blood Group",
-    "marriageStatus": "Marriage Status",
+    "maritalStatus": "Marriage Status",
     "religion": "Religion",
     "nativePlace": "Native Place",
-    "edit": "Edit"
+    "edit": "Edit",
+    "nameField": "A AJITHKUMAR",
+    "dobField": "05-06-1996",
+    "ageField": "29",
+    "bloodGroupField": "O+",
+    "maritalStatusField": "Single",
+    "religionField": "Hindu",
+    "cityField": "Chennai"
   },
+
   "EducationDetails": {
+    "EducationDetails": "EducationDetails",
     "school": "School/College",
     "degree": "Degree",
     "fieldOfStudy": "Field of Study",
     "yearOfGraduation": "Year of Graduation",
     "grade": "Grade/Percentage",
-    "certifications": "Additional Certifications"
+    "certifications": "Additional Certifications",
+    "schoolField": "T J S Engineering College",
+    "degreeField": "Bachelor of Enginnering",
+    "fieldOfStudyField": "Mechanical Engineering",
+    "yearOfGraduationField": "2018",
+    "gradeField": "72%",
+    "certificationsField": "Certified React Developer"
   }
 }

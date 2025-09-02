@@ -1,33 +1,32 @@
-import { routing } from "@/i18n/routing";
-import createMiddleware from "next-intl/middleware";
-export default createMiddleware(routing);
-
 // middleware.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import createIntlMiddleware from "next-intl/middleware";
+import { routing } from "@/i18n/routing";
+
+// Initialise next-intl middleware
+const intlMiddleware = createIntlMiddleware(routing);
 
 export function middleware(req: NextRequest) {
-  const { nextUrl } = req;
+  const res = intlMiddleware(req) ?? NextResponse.next();
 
-  // Check if user is visiting root
-  if (nextUrl.pathname === "/") {
-    // Get locale from cookie (server-side storage)
-    const savedLocale = req.cookies.get("NEXT_LOCALE")?.value;
+  // Redirect "/" → "/<locale>/dashboard"
+  // if (req.nextUrl.pathname === "/") {
+  //   const savedLocale =
+  //     req.cookies.get("NEXT_LOCALE")?.value || routing.defaultLocale || "en";
+  //   const url = req.nextUrl.clone();
+  //   url.pathname = `/${savedLocale}/dashboard`;
+  //   return NextResponse.redirect(url);
+  // }
 
-    // Fallback: default locale
-    const locale = savedLocale || "en";
+  // Grab theme from cookie, default to light
+  const theme = req.cookies.get("theme")?.value || "light";
+  // Add it as a header so the layout can pick it up
+  res.headers.set("x-theme", theme);
 
-    // Redirect to dashboard in the proper locale
-    nextUrl.pathname = `/${locale}/dashboard`;
-    return NextResponse.redirect(nextUrl);
-  }
-
-  return NextResponse.next();
+  return res;
 }
 
 export const config = {
-  // Match all pathnames except for
-  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-  // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher: "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
 };
