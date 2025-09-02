@@ -1,4 +1,4 @@
-import { ProductResponse } from "@/app/dashboard/page";
+import { ProductResponse } from "@/app/[locale]/dashboard/page";
 import { HTTP } from "@/utils/http";
 import axios from "axios";
 interface ProductProps {

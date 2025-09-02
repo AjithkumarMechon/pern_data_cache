@@ -12,8 +12,7 @@ const config = () => {
   };
 };
 
-const baseURL: string =
-  process.env.API_BASE_URL ?? "https://ak-portfolio-nextjs.vercel.app";
+const baseURL: string = process.env.API_BASE_URL ?? "http://localhost:3000";
 export class HTTP {
   static async doGet<T>(url: string): Promise<AxiosResponse<T>> {
     return await axios.get(`${baseURL}${url}`, config());

@@ -1,6 +1,7 @@
 import React from "react";
 import EditField from "./_internal/EditDashboard";
 import { getProducts } from "@/tanstack/dashboard/getProducts";
+import Link from "next/link";
 interface ProductProps {
   id: number;
   title: string;
@@ -59,6 +60,10 @@ const Page = async () => {
           <p className="text-center text-gray-500">No products found.</p>
         )}
       </div>
+
+      <Link href="/dashboard/resume" className="fixed bottom-4 right-4">
+        Resume
+      </Link>
     </>
   );
 };
