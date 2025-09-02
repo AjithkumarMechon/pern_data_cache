@@ -12,7 +12,8 @@ const config = () => {
   };
 };
 
-const baseURL: string = process.env.API_BASE_URL ?? "http://localhost:3000";
+const baseURL: string =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:3000";
 export class HTTP {
   static async doGet<T>(url: string): Promise<AxiosResponse<T>> {
     return await axios.get(`${baseURL}${url}`, config());
