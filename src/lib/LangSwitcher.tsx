@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { setLocale } from "@/utils/setLocale";
 
 export default function LangSwitcher() {
   const router = useRouter();
@@ -25,19 +26,31 @@ export default function LangSwitcher() {
     }
   }, [pathname]);
 
+  // const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const selectedLang = e.target.value;
+  //   setLang(selectedLang);
+
+  //   const segments = pathname.split("/").filter(Boolean);
+  //   if (segments.length > 0) {
+  //     segments[0] = selectedLang; // replace the locale
+  //   } else {
+  //     segments.unshift(selectedLang); // add if missing
+  //   }
+
+  //   const newPath = "/" + segments.join("/");
+  //   router.push(newPath);
+  // };
+
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLang = e.target.value;
     setLang(selectedLang);
 
-    const segments = pathname.split("/").filter(Boolean);
-    if (segments.length > 0) {
-      segments[0] = selectedLang; // replace the locale
-    } else {
-      segments.unshift(selectedLang); // add if missing
-    }
+    const url = new URL(window.location.href);
+    const segments = url.pathname.split("/").filter(Boolean);
 
-    const newPath = "/" + segments.join("/");
-    router.push(newPath);
+    segments[0] = selectedLang; // replace first segment safely
+
+    router.push("/" + segments.join("/") + url.search + url.hash);
   };
 
   return (

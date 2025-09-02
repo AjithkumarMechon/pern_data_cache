@@ -1,7 +1,8 @@
 import React from "react";
 import EditField from "./_internal/EditDashboard";
 import { getProducts } from "@/tanstack/dashboard/getProducts";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+
 interface ProductProps {
   id: number;
   title: string;
@@ -21,6 +22,12 @@ export interface ProductListProps {
 }
 
 export const dynamic = "force-dynamic";
+
+interface PageProps {
+  params: {
+    locale?: string;
+  };
+}
 
 const Page = async () => {
   const { data: products, error: getError } = await getProducts(

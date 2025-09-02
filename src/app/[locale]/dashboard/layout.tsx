@@ -1,13 +1,17 @@
-import React from "react";
 import LangSwitcher from "@/lib/LangSwitcher";
+import React, { ReactNode } from "react";
 
-function layoutRoot({ children }: { children: React.ReactNode }) {
+interface LayoutRootProps {
+  children: ReactNode;
+}
+
+const LayoutRoot: React.FC<LayoutRootProps> = ({ children }) => {
   return (
     <div>
       <LangSwitcher />
       {children}
     </div>
   );
-}
+};
 
-export default layoutRoot;
+export default LayoutRoot;
