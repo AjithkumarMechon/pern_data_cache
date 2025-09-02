@@ -23,12 +23,6 @@ export interface ProductListProps {
 
 export const dynamic = "force-dynamic";
 
-interface PageProps {
-  params: {
-    locale?: string;
-  };
-}
-
 const Page = async () => {
   const { data: products, error: getError } = await getProducts(
     "/api/dashboard"
