@@ -1,10 +1,8 @@
-import { Pen } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export default function PersonalDetails() {
   const t = useTranslations("PersonalDetails");
-  const locale = useLocale();
 
   const personalInfo = [
     { label: t("name"), value: t("nameField") },

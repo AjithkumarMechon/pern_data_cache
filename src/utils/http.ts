@@ -7,7 +7,7 @@ const config = () => {
     headers: {
       "Content-Type": "application/json",
       Authorization: token ? `Bearer ${token}` : "", // Ensure token is valid
-      // "cache-control": "no-cache",
+      "cache-control": "no-cache",
     },
   };
 };

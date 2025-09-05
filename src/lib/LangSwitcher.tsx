@@ -26,21 +26,6 @@ export default function LangSwitcher() {
     }
   }, [pathname]);
 
-  // const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //   const selectedLang = e.target.value;
-  //   setLang(selectedLang);
-
-  //   const segments = pathname.split("/").filter(Boolean);
-  //   if (segments.length > 0) {
-  //     segments[0] = selectedLang; // replace the locale
-  //   } else {
-  //     segments.unshift(selectedLang); // add if missing
-  //   }
-
-  //   const newPath = "/" + segments.join("/");
-  //   router.push(newPath);
-  // };
-
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLang = e.target.value;
     setLang(selectedLang);
@@ -49,7 +34,7 @@ export default function LangSwitcher() {
     const segments = url.pathname.split("/").filter(Boolean);
 
     segments[0] = selectedLang; // replace first segment safely
-
+    setLocale(lang);
     router.push("/" + segments.join("/") + url.search + url.hash);
   };
 

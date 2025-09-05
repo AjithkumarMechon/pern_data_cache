@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import TanstackQueryProvider from "@/tanstack/tanstack.provider";
 import { Toaster } from "react-hot-toast";
-import { NextIntlClientProvider, hasLocale, useLocale } from "next-intl";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import LangSwitcher from "@/lib/LangSwitcher";
@@ -33,10 +33,12 @@ async function IntlProviderWrapper({
 
 export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
-  const locale = useLocale();
+  const { locale } = await params;
 
   if (!locale || !hasLocale(routing.locales, locale)) {
     notFound();
