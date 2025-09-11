@@ -10,25 +10,25 @@ export default function Nav() {
   return (
     <nav style={{ display: "flex", gap: "1rem", padding: 0, margin: 0 }}>
       <Link
-        href={"/dashboard/resume?home=true"}
+        href={"/dashboard?home=true"}
         onClick={() => setSection(Sections.Home)}
       >
         {t("home")}
       </Link>
       <Link
-        href={"/dashboard/resume?about=true"}
+        href={"/dashboard?about=true"}
         onClick={() => setSection(Sections.About)}
       >
         {t("about")}
       </Link>
       <Link
-        href={"/dashboard/resume?contact=true"}
+        href={"/dashboard?contact=true"}
         onClick={() => setSection(Sections.Contact)}
       >
         {t("contact")}
       </Link>
       <Link
-        href={"/dashboard/resume?experience=true"}
+        href={"/dashboard?experience=true"}
         onClick={() => setSection(Sections.Experience)}
       >
         {t("experience")}

@@ -9,14 +9,14 @@ export default function ResumeHeader() {
     <div className="flex flex-col md:flex-row justify-around gap-4 mt-8">
       <header>
         <h1 className="text-2xl font-bold">{t("name")}</h1>
-        <p className="text-lg dark:text-red-900  text-gray-600">{t("role")}</p>
+        <p className="text-lg dark:text-blue-300  text-gray-600">{t("role")}</p>
       </header>
 
       <address className="not-italic space-y-1">
         <p>
           <a
             href={`tel:${t("phone")}`}
-            className="text-blue-600 hover:underline"
+            className="text-blue-500  dark:text-pink-300 hover:underline"
           >
             {t("phone")}
           </a>
@@ -24,7 +24,7 @@ export default function ResumeHeader() {
         <p>
           <a
             href={`mailto:${t("email")}`}
-            className="text-blue-600 hover:underline"
+            className="text-blue-500  dark:text-pink-300 hover:underline"
           >
             {t("email")}
           </a>
@@ -34,7 +34,7 @@ export default function ResumeHeader() {
             href={`https://www.linkedin.com/in/${t("linkedin")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-blue-500  dark:text-pink-300 hover:underline"
           >
             {t("linkedinLabel")}: {t("linkedin")}
           </a>
@@ -46,7 +46,7 @@ export default function ResumeHeader() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-blue-500  dark:text-pink-300 hover:underline"
           >
             {t("location")}
           </a>

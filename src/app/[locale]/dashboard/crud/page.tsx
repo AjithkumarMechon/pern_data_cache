@@ -3,6 +3,7 @@ import EditField from "./_internal/EditDashboard";
 import { getProducts } from "@/tanstack/dashboard/getProducts";
 import { reduxstore } from "@/redux/store";
 import { getFetchProducts, ProductType } from "@/redux/crud/redux.action";
+import { useGetProductsQuery } from "@/redux/productsApi";
 
 export interface ProductProps {
   id?: number;

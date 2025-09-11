@@ -70,7 +70,7 @@ export default function EditField({ item }: EditFieldProps<Product>) {
         return;
       }
       if (deleteProduct.fulfilled.match(resultAction)) {
-        toast.success("Successfully Updated");
+        toast.success("Successfully Deleted");
         router.refresh();
       }
     } catch (err) {
