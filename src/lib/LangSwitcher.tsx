@@ -4,15 +4,15 @@ import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { setLocale } from "@/utils/setLocale";
 
+export const LangOptions = [
+  { code: "en", label: "English" },
+  { code: "ta", label: "Tamil" },
+];
+
 export default function LangSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const [lang, setLang] = useState("en"); // default
-
-  const options = [
-    { code: "en", label: "English" },
-    { code: "ta", label: "Tamil" },
-  ];
 
   // Sync current lang with pathname on mount or pathname change
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function LangSwitcher() {
     const segments = pathname.split("/").filter(Boolean);
     if (
       segments.length > 0 &&
-      options.some((opt) => opt.code === segments[0])
+      LangOptions.some((opt) => opt.code === segments[0])
     ) {
       setLang(segments[0]);
     }
@@ -40,8 +40,13 @@ export default function LangSwitcher() {
 
   return (
     <div>
-      <select value={lang} onChange={handleChange}>
-        {options.map((opt) => (
+      <select
+        id="lang"
+        aria-label="Select language"
+        value={lang}
+        onChange={handleChange}
+      >
+        {LangOptions.map((opt) => (
           <option key={opt.code} value={opt.code}>
             {opt.label}
           </option>

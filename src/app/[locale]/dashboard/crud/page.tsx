@@ -1,15 +1,17 @@
 import React from "react";
 import EditField from "./_internal/EditDashboard";
 import { getProducts } from "@/tanstack/dashboard/getProducts";
+import { reduxstore } from "@/redux/store";
+import { getFetchProducts, ProductType } from "@/redux/crud/redux.action";
 
-interface ProductProps {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-  category: string;
-  name?: string;
+export interface ProductProps {
+  id?: number;
+  title?: string;
+  price?: number;
+  description?: string;
+  image?: string;
+  category?: string;
+  name?: string | undefined;
 }
 
 export interface ProductResponse extends ProductProps {
@@ -20,28 +22,31 @@ export interface ProductListProps {
   data: ProductProps[];
 }
 
-const Page = async () => {
-  const { data: products, error: getError } = await getProducts(
-    "/api/dashboard"
-  );
+const CRUD = async () => {
+  // const { data: products, error: getError } = await getProducts(
+  //   "/api/dashboard"
+  // );
+  const store = reduxstore();
+  await store.dispatch(getFetchProducts());
+  // Extract state
+  const state = store.getState().dashboard;
+  const products = state.products;
+  const error = state.error;
 
-  if (getError) {
+  console.log("products", products);
+
+  if (error) {
     return (
       <p style={{ color: "red" }}>
-        {typeof getError === "string" ? getError : "Failed to fetch products."}
+        {typeof error === "string" ? error : "Failed to fetch products."}
       </p>
     );
   }
 
-  type Product = {
-    id: string;
-    name: string;
-  };
-
-  const productList: Product[] = Array.isArray(products)
+  const productList: ProductType[] = Array.isArray(products)
     ? products
-    : Array.isArray((products as { data?: Product[] })?.data)
-    ? (products as { data: Product[] }).data
+    : Array.isArray((products as { data?: ProductType[] })?.data)
+    ? (products as { data: ProductType[] }).data
     : [];
 
   return (
@@ -51,9 +56,18 @@ const Page = async () => {
           Products
         </h1>
         {productList.length > 0 ? (
-          productList
+          [...productList]
             .sort((a, b) => Number(a.id) - Number(b.id))
-            .map((item) => <EditField key={item.id} item={item} />)
+            .map((item) => (
+              <EditField
+                key={item.id}
+                item={{
+                  ...item,
+                  id: item.id.toString(),
+                  name: item.name ?? "",
+                }}
+              />
+            ))
         ) : (
           <p className="text-center text-gray-500">No products found.</p>
         )}
@@ -62,4 +76,4 @@ const Page = async () => {
   );
 };
 
-export default Page;
+export default CRUD;
