@@ -1,9 +1,8 @@
 import React from "react";
 import EditField from "./_internal/EditDashboard";
-import { getProducts } from "@/tanstack/dashboard/getProducts";
-import { reduxstore } from "@/redux/store";
-import { getFetchProducts, ProductType } from "@/redux/crud/redux.action";
-import { useGetProductsQuery } from "@/redux/productsApi";
+import { ProductType } from "@/redux/crud/redux.action";
+import { Link } from "@/i18n/navigation";
+import { getServerSideProducts } from "@/redux/dashboard/getServerSideProducts";
 
 export interface ProductProps {
   id?: number;
@@ -15,6 +14,9 @@ export interface ProductProps {
   name?: string | undefined;
 }
 
+interface PageProps {
+  params: { locale: string } | Promise<{ locale: string }>;
+}
 export interface ProductResponse extends ProductProps {
   id: number;
 }
@@ -23,18 +25,14 @@ export interface ProductListProps {
   data: ProductProps[];
 }
 
-const CRUD = async () => {
+const CRUD = async ({ params }: PageProps) => {
+  const { locale } = await params;
   // const { data: products, error: getError } = await getProducts(
   //   "/api/dashboard"
   // );
-  const store = reduxstore();
-  await store.dispatch(getFetchProducts());
-  // Extract state
-  const state = store.getState().dashboard;
-  const products = state.products;
-  const error = state.error;
 
-  console.log("products", products);
+  const state = await getServerSideProducts();
+  const { products, error } = state.dashboard;
 
   if (error) {
     return (
@@ -73,6 +71,13 @@ const CRUD = async () => {
           <p className="text-center text-gray-500">No products found.</p>
         )}
       </div>
+      <Link
+        href="/dashboard"
+        locale={locale}
+        className="fixed bottom-4 right-4"
+      >
+        Dashboard
+      </Link>
     </>
   );
 };
