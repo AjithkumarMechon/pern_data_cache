@@ -39,19 +39,17 @@ export default function LangSwitcher() {
   };
 
   return (
-    <div>
-      <select
-        id="lang"
-        aria-label="Select language"
-        value={lang}
-        onChange={handleChange}
-      >
-        {LangOptions.map((opt) => (
-          <option key={opt.code} value={opt.code}>
-            {opt.label}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select
+      id="lang"
+      aria-label="Select language"
+      value={lang}
+      onChange={handleChange}
+    >
+      {LangOptions.map((opt) => (
+        <option key={opt.code} value={opt.code}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
   );
 }

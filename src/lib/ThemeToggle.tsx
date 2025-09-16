@@ -22,7 +22,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded bg-gray-100 dark:bg-gray-800 text-black  transition-colors"
+      className="p-2 rounded text-black transition-colors h-24"
     >
       {mode === "dark" ? "🌙" : "☀️"}
     </button>
