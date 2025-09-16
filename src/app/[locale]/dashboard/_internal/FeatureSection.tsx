@@ -1,11 +1,3 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Code, Cpu, Globe, Zap } from "lucide-react";
 import React from "react";
 
 function FeatureSection() {
@@ -13,16 +5,20 @@ function FeatureSection() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-black text-foreground">
-          Why Choose ReactJS?
+          This website is built with Next.js and React.js
         </h2>
         <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-          Powerful features that make React the leading choice for modern web
-          development
+          Featuring powerful tools that make React the leading choice for modern
+          web development, including Tailwind CSS, i18n for multilingual
+          support, Redux Toolkit, responsive design, email feedback integration,
+          and a robust backend powered by Node.js, Express, PostgreSQL, OAuth,
+          and JWT authentication.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {/* Component-Based */}
-        <Card className="border-border">
+
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> */}
+      {/* Component-Based */}
+      {/* <Card className="border-border">
           <CardHeader>
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
               <Cpu className="h-6 w-6 text-primary" />
@@ -35,9 +31,9 @@ function FeatureSection() {
               compose them to make complex UIs.
             </CardDescription>
           </CardContent>
-        </Card>
-        {/* Virtual DOM */}
-        <Card className="border-border">
+        </Card> */}
+      {/* Virtual DOM */}
+      {/* <Card className="border-border">
           <CardHeader>
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
               <Zap className="h-6 w-6 text-primary" />
@@ -50,9 +46,9 @@ function FeatureSection() {
                   and smooth user experiences.`}
             </CardDescription>
           </CardContent>
-        </Card>
-        {/* Declarative */}
-        <Card className="border-border">
+        </Card> */}
+      {/* Declarative */}
+      {/* <Card className="border-border">
           <CardHeader>
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
               <Code className="h-6 w-6 text-primary" />
@@ -65,9 +61,9 @@ function FeatureSection() {
               will efficiently update and render components.
             </CardDescription>
           </CardContent>
-        </Card>
-        {/* Learn Once, Write Anywhere */}
-        <Card className="border-border">
+        </Card> */}
+      {/* Learn Once, Write Anywhere */}
+      {/* <Card className="border-border">
           <CardHeader>
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
               <Globe className="h-6 w-6 text-primary" />
@@ -80,8 +76,8 @@ function FeatureSection() {
               using React Native.
             </CardDescription>
           </CardContent>
-        </Card>
-      </div>
+        </Card> */}
+      {/* </div> */}
     </div>
   );
 }

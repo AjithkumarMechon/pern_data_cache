@@ -1,29 +1,36 @@
 import React from "react";
-// import dynamic from "next/dynamic";
-import ResumeHeader from "@/app/[locale]/dashboard/_internal/header";
-import Nav from "@/app/[locale]/dashboard/_internal/navFile";
-import MainComponent from "@/app/[locale]/dashboard/_internal/mainComponent";
-import { Link } from "@/i18n/navigation";
-import NewDashboard from "./_internal/NewDashboard";
+import Header from "@/app/[locale]/dashboard/_internal/Header";
+import FeatureSection from "@/app/[locale]/dashboard/_internal/FeatureSection";
+import CommunitySection from "@/app/[locale]/dashboard/_internal/CommunitySection";
+import Footer from "@/app/[locale]/dashboard/_internal/Footer";
 interface PageProps {
   params: { locale: string } | Promise<{ locale: string }>;
 }
 const Page = async ({ params }: PageProps) => {
   const { locale } = await params;
+
   return (
-    <>
-      <NewDashboard />
-      {/* <ResumeHeader />
-      <Nav />
-      <MainComponent /> */}
-      <Link
-        href="/dashboard/crud"
-        locale={locale}
-        className="fixed bottom-4 right-4"
-      >
-        CRUD
-      </Link>
-    </>
+    <div className="bg-background text-foreground grid grid-cols-3 md:grid-cols-6 auto-rows-auto gap-4 items-center justify-items-center  mt-18">
+      {/* Header */}
+      <header className="z-50 w-full fixed top-0 bg-amber-100 h-18">
+        <Header />
+      </header>
+
+      {/* Features Section */}
+      <section id="features" className="py-4 col-span-full md:col-span-6">
+        <FeatureSection />
+      </section>
+
+      {/* Community Section */}
+      <section id="community" className="py-4 col-span-full md:col-span-6">
+        <CommunitySection locale={locale} />
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border py-4 col-span-full md:col-span-6">
+        <Footer />
+      </footer>
+    </div>
   );
 };
 

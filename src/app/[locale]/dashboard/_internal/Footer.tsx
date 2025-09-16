@@ -1,10 +1,9 @@
-import { Rocket } from "lucide-react";
 import React from "react";
 
 function Footer() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col md:flex-row justify-between items-center">
+      {/* <div className="flex flex-col md:flex-row justify-between items-center">
         <div className="flex items-center gap-2 mb-4 md:mb-0">
           <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
             <Rocket className="h-5 w-5" />
@@ -37,8 +36,8 @@ function Footer() {
             GitHub
           </a>
         </div>
-      </div>
-      <div className="mt-8 pt-8 border-t border-border text-center">
+      </div> */}
+      <div className="border-border text-center">
         <p className="text-sm text-muted-foreground">
           © 2024 ReactJS. Built with React and love by developers worldwide.
         </p>

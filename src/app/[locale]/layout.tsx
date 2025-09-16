@@ -1,11 +1,9 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import TanstackQueryProvider from "@/tanstack/tanstack.provider";
 import { Toaster } from "react-hot-toast";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-
 import { routing } from "@/i18n/routing";
-import LangSwitcher from "@/lib/LangSwitcher";
-import ThemeToggle from "@/lib/ThemeToggle";
 import { cookies } from "next/headers";
 import ReduxProvider from "@/redux/ClientProvider/ReduxProvider";
 import { notFound } from "next/navigation";
@@ -41,7 +39,7 @@ export default async function RootLayout({
   const { locale } = await params;
 
   if (!locale || !hasLocale(routing.locales, locale)) {
-    notFound();
+    notFound;
   }
   const cookieStore = await cookies();
   const theme = cookieStore.get("theme")?.value || "light";
