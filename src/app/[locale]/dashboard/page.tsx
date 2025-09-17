@@ -1,4 +1,5 @@
 import React from "react";
+
 import Header from "@/app/[locale]/dashboard/_internal/Header";
 import FeatureSection from "@/app/[locale]/dashboard/_internal/FeatureSection";
 import CommunitySection from "@/app/[locale]/dashboard/_internal/CommunitySection";
