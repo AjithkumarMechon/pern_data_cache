@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Linkedin, Mail, Globe, Phone } from "lucide-react";
+import { Linkedin, Mail, Globe, Phone, StickyNote } from "lucide-react";
+import DownloadLink from "next/link";
 import { Link } from "@/i18n/navigation";
 import React, { useState } from "react";
 
@@ -36,13 +37,10 @@ const CommunitySection = ({ locale }: PageProps) => {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
+      <div className="text-center mb-4">
         <h2 className="text-3xl md:text-4xl font-black text-foreground">
-          Join the Our Community
+          Join with US
         </h2>
-        <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-          Connect with our developers team and contribute to the ecosystem
-        </p>
       </div>
       <div className="max-w-4xl mx-auto">
         <Card className="border-border p-8">
@@ -99,7 +97,7 @@ const CommunitySection = ({ locale }: PageProps) => {
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 Connect With Us
               </h3>
-              <div className="flex space-x-6">
+              <div className="flex space-x-3">
                 {/* <Link
                   href="#"
                   className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
@@ -133,6 +131,12 @@ const CommunitySection = ({ locale }: PageProps) => {
                 >
                   <Globe className="h-6 w-6" />
                 </Link>
+                <DownloadLink
+                  href="/AjithkumarAnandan_Resume.pdf"
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  <StickyNote className="h-6 w-6" />
+                </DownloadLink>
               </div>
               <p className="text-muted-foreground mt-6">
                 Feel free to reach out through phone, email, LinkedIn, or my
