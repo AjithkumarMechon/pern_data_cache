@@ -1,8 +1,9 @@
 import React from "react";
-import HeaderSection from "./_internal/Header";
+
 import FeatureSection from "./_internal/FeatureSection";
 import CommunitySection from "./_internal/CommunitySection";
-import FooterSection from "./_internal/Footer";
+import HeaderSection from "./_internal/HeaderSection";
+import FooterSection from "./_internal/FooterSection";
 
 interface PageProps {
   params: { locale: string } | Promise<{ locale: string }>;
