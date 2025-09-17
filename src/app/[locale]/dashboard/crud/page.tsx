@@ -3,6 +3,7 @@ import EditField from "./_internal/EditDashboard";
 import { ProductType } from "@/redux/crud/redux.action";
 import { Link } from "@/i18n/navigation";
 import { getServerSideProducts } from "@/redux/dashboard/getServerSideProducts";
+import AddPage from "./_internal/AddList";
 
 export interface ProductProps {
   id?: number;
@@ -55,6 +56,7 @@ const CRUD = async ({ params }: PageProps) => {
           <h1 className="font-bold text-3xl text-center mb-6 text-gray-800">
             Products
           </h1>
+          <AddPage />
 
           {productList.length > 0 ? (
             <div className="space-y-4">
