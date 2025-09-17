@@ -1,6 +1,6 @@
 import React from "react";
 
-function Footer() {
+function FooterSection() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       {/* <div className="flex flex-col md:flex-row justify-between items-center">
@@ -46,4 +46,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default FooterSection;

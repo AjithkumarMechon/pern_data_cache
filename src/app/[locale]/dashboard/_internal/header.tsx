@@ -8,7 +8,7 @@ import React, { useState } from "react";
 interface PageProps {
   locale: string;
 }
-function Header({ locale }: PageProps) {
+function HeaderSection({ locale }: PageProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   console.log("locale", locale);
   return (
@@ -122,4 +122,4 @@ function Header({ locale }: PageProps) {
   );
 }
 
-export default Header;
+export default HeaderSection;
