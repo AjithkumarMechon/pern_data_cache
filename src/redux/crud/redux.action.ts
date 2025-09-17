@@ -1,6 +1,5 @@
-import { ProductProps } from "@/app/[locale]/dashboard/crud/page";
 import { HTTP } from "@/utils/http";
-import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 export interface ProductResponse {
   data: ProductType[];
