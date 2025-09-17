@@ -1,24 +1,29 @@
 "use client";
+import { Link } from "@/i18n/navigation";
 import LangSwitcher from "@/lib/LangSwitcher";
 import ThemeToggle from "@/lib/ThemeToggle";
 import { Rocket } from "lucide-react";
-import Link from "next/link";
 import React, { useState } from "react";
 
-function Header() {
+interface PageProps {
+  locale: string;
+}
+function Header({ locale }: PageProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  console.log("locale", locale);
   return (
     <>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <Rocket className="h-6 w-6" />
+          <Link href="/dashboard" locale={locale}>
+            <div className="flex items-center gap-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary text-primary-foreground">
+                <Rocket className="h-6 w-6" />
+              </div>
+              <span className="text-xl font-bold">AK PORTFOLIO</span>
             </div>
-            <span className="text-xl font-bold">AK PORTFOLIO</span>
-          </div>
+          </Link>
 
           <div className="md:hidden block space-x-4">
             <LangSwitcher />
@@ -32,12 +37,6 @@ function Header() {
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
               Features
-            </Link>
-            <Link
-              href="#showcase"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >
-              Showcase
             </Link>
             <Link
               href="#community"
@@ -103,12 +102,6 @@ function Header() {
               className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-accent transition-colors"
             >
               Features
-            </Link>
-            <Link
-              href="#showcase"
-              className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-accent transition-colors"
-            >
-              Showcase
             </Link>
             <Link
               href="#community"

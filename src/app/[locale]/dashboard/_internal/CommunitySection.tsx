@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, Twitter, Globe } from "lucide-react";
+import { Linkedin, Mail, Globe, Phone } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 interface PageProps {
   locale: string;
@@ -95,16 +95,22 @@ const CommunitySection = ({ locale }: PageProps) => {
                 </Button>
               </form>
             </div>
-            <div>
+            <div className="d-flex content-center m-4">
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 Connect With Us
               </h3>
-              <div className="flex space-x-4">
-                <Link
+              <div className="flex space-x-6">
+                {/* <Link
                   href="#"
                   className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   <Github className="h-6 w-6" />
+                </Link> */}
+                <Link
+                  href="tel:+917708192049"
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  <Phone className="h-6 w-6" />
                 </Link>
                 <Link
                   href={`https://www.linkedin.com/in/ajithkumar-anandan-developer/`}
@@ -114,7 +120,7 @@ const CommunitySection = ({ locale }: PageProps) => {
                   <Linkedin className="h-6 w-6" />
                 </Link>
                 <Link
-                  href={`mailto: ajithkumaranandandev@gmail.com`}
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=ajithkumaranandandeveloper@gmail.com"
                   target="_blank"
                   className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
@@ -129,7 +135,8 @@ const CommunitySection = ({ locale }: PageProps) => {
                 </Link>
               </div>
               <p className="text-muted-foreground mt-6">
-                Join millions of developers building amazing things with React.
+                Feel free to reach out through phone, email, LinkedIn, or my
+                site.
               </p>
             </div>
           </div>

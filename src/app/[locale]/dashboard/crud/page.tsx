@@ -50,31 +50,43 @@ const CRUD = async ({ params }: PageProps) => {
 
   return (
     <>
-      <div className="block">
-        <h1 className="font-bold text-2xl flex justify-center mb-4">
-          Products
-        </h1>
-        {productList.length > 0 ? (
-          [...productList]
-            .sort((a, b) => Number(a.id) - Number(b.id))
-            .map((item) => (
-              <EditField
-                key={item.id}
-                item={{
-                  ...item,
-                  id: item.id.toString(),
-                  name: item.name ?? "",
-                }}
-              />
-            ))
-        ) : (
-          <p className="text-center text-gray-500">No products found.</p>
-        )}
+      <div className="max-w-3xl mx-auto p-6">
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          <h1 className="font-bold text-3xl text-center mb-6 text-gray-800">
+            Products
+          </h1>
+
+          {productList.length > 0 ? (
+            <div className="space-y-4">
+              {[...productList]
+                .sort((a, b) => Number(a.id) - Number(b.id))
+                .map((item) => (
+                  <div
+                    key={item.id}
+                    className="items-center justify-between bg-gray-50 border rounded-xl shadow-sm hover:shadow-md transition p-2"
+                  >
+                    {/* Product info / edit field */}
+                    <EditField
+                      item={{
+                        ...item,
+                        id: item.id.toString(),
+                        name: item.name ?? "",
+                      }}
+                    />
+                  </div>
+                ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-500">No products found.</p>
+          )}
+        </div>
       </div>
+
+      {/* Floating dashboard button */}
       <Link
         href="/dashboard"
         locale={locale}
-        className="fixed bottom-4 right-4"
+        className="fixed bottom-6 right-6 bg-blue-600 text-white px-5 py-3 rounded-full shadow-lg hover:bg-blue-700 transition"
       >
         Dashboard
       </Link>

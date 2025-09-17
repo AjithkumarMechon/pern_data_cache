@@ -86,30 +86,33 @@ export default function EditField({ item }: EditFieldProps<Product>) {
   };
 
   return (
-    <div style={{ padding: "0.5rem 0" }}>
+    <div className="flex items-center justify-between py-2 px-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition relative">
       {editing ? (
-        <form onSubmit={handleSubmit} style={{ display: "inline" }}>
+        <form onSubmit={handleSubmit} className="flex-1">
           <input
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             onBlur={() => setEditing(false)}
             autoFocus
+            className="w-full border-b focus:outline-none focus:border-blue-500"
           />
         </form>
       ) : (
         <>
-          <span onClick={() => setEditing(true)} style={{ cursor: "pointer" }}>
+          <span
+            tabIndex={0}
+            onClick={() => setEditing(true)}
+            className="flex-1 cursor-pointer text-gray-800"
+          >
             {item.name}
           </span>
-          <form
-            action={() => handleDelete(item.id)}
-            style={{ display: "inline", marginLeft: "0.5rem" }}
+          <button
+            onClick={() => handleDelete(item.id)}
+            className="absolute -right-0 -top-2 ml-4 text-red-500 hover:text-red-700 font-bold"
           >
-            <button type="submit" style={{ color: "red" }}>
-              X
-            </button>
-          </form>
+            ✕
+          </button>
         </>
       )}
     </div>

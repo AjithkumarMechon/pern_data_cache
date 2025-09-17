@@ -38,8 +38,8 @@ function Footer() {
         </div>
       </div> */}
       <div className="border-border text-center">
-        <p className="text-sm text-muted-foreground">
-          © 2024 ReactJS. Built with React and love by developers worldwide.
+        <p className="text-sm text-muted-foreground font-bold">
+          © 2025 ReactJS. Built with React and love by developers worldwide.
         </p>
       </div>
     </div>
