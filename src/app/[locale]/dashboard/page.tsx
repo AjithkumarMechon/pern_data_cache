@@ -1,5 +1,4 @@
 import React from "react";
-
 import MainSection from "./_internal/MainSection";
 import HeaderSection from "./_internal/HeaderSection";
 import FooterSection from "./_internal/FooterSection";
