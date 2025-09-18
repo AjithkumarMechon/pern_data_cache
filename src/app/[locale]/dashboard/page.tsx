@@ -1,7 +1,6 @@
 import React from "react";
 
-import FeatureSection from "./_internal/FeatureSection";
-import CommunitySection from "./_internal/CommunitySection";
+import MainSection from "./_internal/MainSection";
 import HeaderSection from "./_internal/HeaderSection";
 import FooterSection from "./_internal/FooterSection";
 
@@ -17,17 +16,10 @@ const Page = async ({ params }: PageProps) => {
       <header className="z-50 w-full fixed top-0 bg-amber-100 h-18">
         <HeaderSection locale={locale} />
       </header>
-
-      {/* Features Section */}
-      <section id="features" className="py-4 col-span-full md:col-span-6">
-        <FeatureSection />
+      {/* MainSection Section */}
+      <section className="py-4 col-span-full md:col-span-6">
+        <MainSection locale={locale} />
       </section>
-
-      {/* Community Section */}
-      <section id="community" className="py-4 col-span-full md:col-span-6">
-        <CommunitySection locale={locale} />
-      </section>
-
       {/* Footer */}
       <footer className="border-t border-border py-2 col-span-full md:col-span-6 bg-amber-100 w-full">
         <FooterSection />
