@@ -133,6 +133,7 @@ const CommunitySection = ({ locale }: PageProps) => {
                 </Link>
                 <DownloadLink
                   href="/AjithkumarAnandan_Resume.pdf"
+                  target="_blank"
                   className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   <StickyNote className="h-6 w-6" />
