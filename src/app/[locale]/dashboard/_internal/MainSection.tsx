@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Linkedin, Mail, Globe, Phone, StickyNote } from "lucide-react";
-import DownloadLink from "next/link";
+// import DownloadLink from "next/link";
 import { Link } from "@/i18n/navigation";
 import React, { useState } from "react";
 
@@ -143,13 +143,13 @@ const MainSection = ({ locale }: PageProps) => {
                 >
                   <Globe className="h-6 w-6" />
                 </Link>
-                <DownloadLink
+                <a
                   href="/AjithkumarAnandan_Resume.pdf"
                   target="_blank"
                   className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   <StickyNote className="h-6 w-6" />
-                </DownloadLink>
+                </a>
               </div>
               <p className="text-muted-foreground mt-6">
                 Feel free to reach out through phone, email, LinkedIn, or my
