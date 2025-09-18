@@ -38,7 +38,7 @@ function FooterSection() {
         </div>
       </div> */}
       <div className="border-border text-center">
-        <p className="text-sm text-muted-foreground font-bold">
+        <p className="text-sm text-muted-foreground font-bold  dark:text-white ">
           © 2025 ReactJS. Built with React and love by developers worldwide.
         </p>
       </div>

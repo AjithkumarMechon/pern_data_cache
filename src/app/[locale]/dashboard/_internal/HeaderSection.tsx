@@ -10,7 +10,7 @@ interface PageProps {
 }
 function HeaderSection({ locale }: PageProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log("locale", locale);
+
   return (
     <>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

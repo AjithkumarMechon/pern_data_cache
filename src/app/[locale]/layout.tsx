@@ -45,7 +45,7 @@ export default async function RootLayout({
   const theme = cookieStore.get("theme")?.value || "light";
 
   return (
-    <html lang={locale} data-theme={theme}>
+    <html lang={locale} className={`${theme}`}>
       <body>
         <Toaster />
         <IntlProviderWrapper locale={locale}>

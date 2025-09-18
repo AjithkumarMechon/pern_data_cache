@@ -9,14 +9,14 @@ export default function ThemeToggle() {
     const savedTheme = localStorage.getItem("theme");
     const initialTheme = savedTheme || "light";
     setMode(initialTheme);
-    document.documentElement.setAttribute("data-theme", initialTheme);
+    document.documentElement.setAttribute("class", initialTheme);
   }, []);
 
   function toggleTheme() {
     const newTheme = mode === "dark" ? "light" : "dark";
     setMode(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+    document.documentElement.setAttribute("class", newTheme);
   }
 
   return (

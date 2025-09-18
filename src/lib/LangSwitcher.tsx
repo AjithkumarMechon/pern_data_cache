@@ -44,9 +44,14 @@ export default function LangSwitcher() {
       aria-label="Select language"
       value={lang}
       onChange={handleChange}
+      className=" rounded"
     >
       {LangOptions.map((opt) => (
-        <option key={opt.code} value={opt.code}>
+        <option
+          className="dark:text-white dark:bg-black"
+          key={opt.code}
+          value={opt.code}
+        >
           {opt.label}
         </option>
       ))}
